@@ -167,6 +167,7 @@
     <Content Include="Views\Messages\Reply.cshtml" />
     <Content Include="Views\Task\ViewAll.cshtml" />
     <Content Include="Views\Task\CreateEdit.cshtml" />
+    <Content Include="Views\Shared\Nav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
