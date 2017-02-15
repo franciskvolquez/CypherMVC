@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,6 +165,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Messages\ViewAll.cshtml" />
     <Content Include="Views\Messages\Reply.cshtml" />
+    <Content Include="Views\Task\ViewAll.cshtml" />
+    <Content Include="Views\Task\CreateEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
