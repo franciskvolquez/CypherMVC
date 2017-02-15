@@ -4,14 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cypher Marketing</title>
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="Content/font-awesome.css" rel="stylesheet" />
-    <link href="Content/sb-admin-2.css" rel="stylesheet" />
-    <link href="Content/custom.css" rel="stylesheet" />
+    
+    @Styles.Render("~/bundles/css")
+    @Scripts.Render("~bundles/jquery")
+    @Scripts.Render("~bundles/jqueryval")
 
-    <script src="scripts/jquery-1.10.2.js"></script>
-    <script src="scripts/jquery.validate.js"></script>
-    <script src="scripts/jquery.validate.unobtrusive.js"></script>
+    
 </head>
 <body>
     <div id="wrapper">
@@ -22,5 +20,6 @@
         </div>
         <!-- End Page Wrapper -->
     </div>
+   
 </body>
 </html>

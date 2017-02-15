@@ -1,31 +1,164 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Welcome to the Feedback Application! <br />
+            <small>Here you can manage the messages and tasks for our customers.</small>
+        </h1>
+    </div>
 </div>
-
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="col-md-8">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                Latest Messages
+            </div>
+            <div class="panel-body">
+                <table class="table table-responsive list-view">
+                    <thead>
+                        <tr>
+                            <th>From</th>
+                            <th>Subject</th>
+                            <th>Sent</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>mark@sample.com</td>
+                            <td>Concerned Customer</td>
+                            <td>1/17/2016 11:01:39 AM</td>
+                            <td><a href="/Messages/ReplyMessage/3">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>joe@sample.com</td>
+                            <td>Question about shipping</td>
+                            <td>1/17/2016 11:01:39 AM</td>
+                            <td><a href="/Messages/ReplyMessage/4">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>sam@sample.com</td>
+                            <td>Mobile app troubles</td>
+                            <td>1/17/2016 11:01:39 AM</td>
+                            <td><a href="/Messages/ReplyMessage/5">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>alex@sample.com</td>
+                            <td>Poor service</td>
+                            <td>1/17/2016 11:01:39 AM</td>
+                            <td><a href="/Messages/ReplyMessage/6">View</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer">
+                <a class="pull-right btn btn-primary" href="/Messages/ViewMessages">See all</a> <br />
+                <span class="clearfix"></span>
+            </div>
+        </div>
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                Admin Tasks
+            </div>
+            <div class="panel-body">
+                <table class="table table-responsive list-view">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Due Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Follow up with marketing about materials</td>
+                            <td>A vendor has not received shipments for an order they placed through the online form.</td>
+                            <td>1/24/2016 11:01:39 AM</td>
+                            <td><a href="/Task/CreateEditTask/1">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>Vendor issues</td>
+                            <td>A vendor has not received their order, please address this and check that the order was placed.</td>
+                            <td>1/24/2016 11:01:39 AM</td>
+                            <td><a href="/Task/CreateEditTask/2">View</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer">
+                <a class="pull-right btn btn-primary" href="/Home/ViewTasks?Length=4">See all</a>
+                <div class="clearfix"></div>
+            </div>
+        </div>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <div class="col-sm-12">
+            <div class="panel panel-primary widget">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-comments fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <h3>Rep of the Month</h3>
+                            <p>You can only vote once!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-display">
+                    <table class="table table-fluid table-striped">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Add Vote</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jane</td>
+                                <td><a href="#" class="vote-up" data-userid="3">Vote Up</a></td>
+                            </tr>
+                            <tr>
+                                <td>Sarah</td>
+                                <td><a href="#" class="vote-up" data-userid="4">Vote Up</a></td>
+                            </tr>
+                            <tr>
+                                <td>Joe</td>
+                                <td><a href="#" class="vote-up" data-userid="2">Vote Up</a></td>
+                            </tr>
+                            <tr>
+                                <td>Bob</td>
+                                <td><a href="#" class="vote-up" data-userid="1">Vote Up</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="panel panel-green widget">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-tasks fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <h3>Continuous Improvement</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 feature-request">
+                            <p>Have a feature request or suggestion for how we can improve this app? Let us know! Send us a suggestion.</p>
+                            <form action="/Home/FeatureRequest" method="post">
+                                <textarea class="form-control" id="suggestion" rows="5" type="text" name="suggestion"></textarea><br />
+                                <input type="submit" value="Submit" class="improvement btn btn-primary pull-right" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
