@@ -16,7 +16,7 @@
                     <span><i class="fa fa-edit fa-fw"></i> Messages</span>
                     <ul class="nav nav-second-level in">
                         <li>
-                            <a href="/Messages/ViewMessages">View Messages</a>
+                            @Html.ActionLink("View Messages","ViewAll","Messages")
                         </li>
                     </ul>
                 </li>
@@ -24,10 +24,10 @@
                     <span><i class="fa fa-edit fa-fw"></i> Tasks</span>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="/Task/CreateEditTask">Create Task</a>
+                            @Html.ActionLink("Create Task","CreateEdit","Task")
                         </li>
                         <li>
-                            <a href="/Task/ViewTasks">View Tasks</a>
+                            @Html.ActionLink("View Tasks", "ViewAll", "Task")
                         </li>
                     </ul>
                 </li>
