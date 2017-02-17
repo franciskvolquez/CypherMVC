@@ -1,4 +1,7 @@
-﻿<div id="suggestionWidget" class="panel panel-green widget">
+﻿@model bool
+
+
+<div id="suggestionWidget" class="panel panel-green widget">
     <div class="panel-heading">
         <div class="row">
             <div class="col-xs-3">
@@ -12,20 +15,24 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-xs-12 feature-request">
-                <p>Have a feature request or suggestion for how we can improve this app? Let us know! Send us a suggestion.</p>
+                @if(Model)
+                {
+                    <p class="alert alert-success">Thanks for your feedback! You'll hear from us soon.</p>
+                }
+                else
+                {
+                    <p class="alert alert-success">¨Your feedback could not be sent.</p>
+                }             
                 @{ 
                     var options = new AjaxOptions()
                     {
-                        HttpMethod = "Post",
+                        HttpMethod = "Get",
                         InsertionMode = InsertionMode.ReplaceWith,
                         UpdateTargetId = "suggestionWidget"
                     };
                 }
-                @using (@Ajax.BeginForm("Suggestion", "Home", options))
-                {
-                    <textarea class="form-control" id="suggestion" rows="5" type="text" name="suggestion"></textarea><br />
-                    <input type="submit" value="Submit" class="improvement btn btn-primary pull-right" />
-                }              
+               
+                <p>@Ajax.ActionLink("Send Another","Suggestion",null,options,new {@class= "pull-right btn btn-primary"})</p>           
             </div>
         </div>
     </div>

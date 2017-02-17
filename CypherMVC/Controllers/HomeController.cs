@@ -48,18 +48,10 @@ namespace CypherMVC.Controllers
         [HttpPost]
         public ActionResult Suggestion(string suggestion)
         {
-            if(string.IsNullOrWhiteSpace(suggestion))
-            {
-                //Send email
-                TempData["Status"] = "Your message has been submitted!";
-            }
-            else
-            {
-                TempData["Status"] = "Your message could not be submitted!";
-            }
+            //Send email, return true or false for success 
+            var emailSent = true;
 
-
-            return RedirectToAction("Index");
+            return PartialView("SuggestionResult", emailSent);
         }
     }
 }
