@@ -93,72 +93,10 @@
     </div>
     <div class="col-md-4">
         <div class="col-sm-12">
-            <div class="panel panel-primary widget">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-comments fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <h3>Rep of the Month</h3>
-                            <p>You can only vote once!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="widget-display">
-                    <table class="table table-fluid table-striped">
-                        <thead>
-                            <tr>
-                                <th>User</th>
-                                <th>Add Vote</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Jane</td>
-                                <td><a href="#" class="vote-up" data-userid="3">Vote Up</a></td>
-                            </tr>
-                            <tr>
-                                <td>Sarah</td>
-                                <td><a href="#" class="vote-up" data-userid="4">Vote Up</a></td>
-                            </tr>
-                            <tr>
-                                <td>Joe</td>
-                                <td><a href="#" class="vote-up" data-userid="2">Vote Up</a></td>
-                            </tr>
-                            <tr>
-                                <td>Bob</td>
-                                <td><a href="#" class="vote-up" data-userid="1">Vote Up</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+           @Html.Action("Survey")
         </div>
         <div class="col-sm-12">
-            <div class="panel panel-green widget">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-tasks fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <h3>Continuous Improvement</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-xs-12 feature-request">
-                            <p>Have a feature request or suggestion for how we can improve this app? Let us know! Send us a suggestion.</p>
-                            <form action="/Home/FeatureRequest" method="post">
-                                <textarea class="form-control" id="suggestion" rows="5" type="text" name="suggestion"></textarea><br />
-                                <input type="submit" value="Submit" class="improvement btn btn-primary pull-right" />
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @Html.Action("Suggestion")           
         </div>
     </div>
 </div>

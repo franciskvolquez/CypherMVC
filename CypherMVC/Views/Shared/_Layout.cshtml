@@ -16,6 +16,11 @@
          @Html.Partial("Nav")
         <!-- Begin Page Wrapper -->
         <div id="page-wrapper">
+
+            @if(TempData["Status"] != null)
+            {
+                <div class="alert-info alert">@TempData["Status"]</div>
+            }
             @RenderBody()
         </div>
         <!-- End Page Wrapper -->
