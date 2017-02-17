@@ -1,5 +1,32 @@
 ﻿@model CypherMVC.Models.Task
 
+<script>
+    $(function () {
+        $('.msg-suggestion').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '@Url.Action("MessageSugestions","Task")',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: request,
+                    success: function (data) {
+                        response($.map(data,function(item){
+                            return{
+                                label:item.Label,
+                                id:item.Id
+                             };
+                        }));
+                    }
+
+                })
+            },
+            select: function (event, ui) {
+                $(".msg-id").val(ui.item.id);
+            }
+        })
+    })
+</script>
+
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
@@ -40,9 +67,13 @@
                 @Html.ValidationMessageFor(x => x.AssignedToId)
             </div>
             <div class="form-group">
-                @Html.LabelFor(x => x.AssociatedMessageId, "Associated Message")
-                @Html.TextBoxFor(x => x.AssociatedMessageId, new { @class = "form-control" })
+                @Html.LabelFor(x => x.AssociatedMessage, "Associated Message")
+                @Html.TextBoxFor(x => x.AssociatedMessage.Subject, new { @class = "form-control msg-suggestion" })
                 @Html.ValidationMessageFor(x => x.AssociatedMessageId)
+            </div>
+            <div class="form-group">
+                @Html.HiddenFor(x => x.AssociatedMessageId, new { @class = "form-control msg-id" })
+              
             </div>
             <div class="form-group">
                 @Html.LabelFor(x => x.Notes)

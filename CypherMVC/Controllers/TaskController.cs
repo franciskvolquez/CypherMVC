@@ -65,5 +65,13 @@ namespace CypherMVC.Controllers
 
             return View(task);
         }
+
+        public ActionResult MessageSugestions(string term)
+        {
+            var context = new FeedbackContext();
+            var messages = context.Messages.Where(x => x.Subject.Contains(term))
+                .Select(x => new { Label = x.Subject, Id = x.Id }).ToList();
+            return Json(messages, JsonRequestBehavior.AllowGet);
+        }
     }
 }
