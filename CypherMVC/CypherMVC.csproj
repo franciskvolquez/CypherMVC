@@ -136,6 +136,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DueDate.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\DashBoardVM.cs" />
@@ -196,6 +197,8 @@
     <Content Include="Views\Task\ViewAll.cshtml" />
     <Content Include="Views\Task\CreateEdit.cshtml" />
     <Content Include="Views\Shared\Nav.cshtml" />
+    <Content Include="Views\Shared\Survey.cshtml" />
+    <Content Include="Views\Shared\Suggestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

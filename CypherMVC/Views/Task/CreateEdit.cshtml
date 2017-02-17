@@ -10,40 +10,49 @@
 </div>
 <div class="row">
     <div class="col-md-12">
+        @Html.ValidationSummary()
         @using (Html.BeginForm("CreateEdit", "Task"))
         {
             <div class="form-group">
                 @Html.LabelFor(x => x.Title)
                 @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Title)
             </div>
             <div class="form-group">
                 @Html.LabelFor(x => x.Description)
                 @Html.TextAreaFor(x => x.Description, new { @class = "form-control", rows = 5 })
+                @Html.ValidationMessageFor(x => x.Description)
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(x => x.CategoryId, "Category")
                 @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.Categories, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.CategoryId)
             </div>
             <div class="form-group">
                 @Html.LabelFor(x => x.DueDate, "Due Date")
                 @Html.TextBoxFor(x => x.DueDate, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.DueDate)
             </div>
             <div class="form-group">
                 @Html.LabelFor(x => x.AssignedToId, "Assigned To")
                 @Html.TextBoxFor(x => x.AssignedToId, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.AssignedToId)
             </div>
             <div class="form-group">
                 @Html.LabelFor(x => x.AssociatedMessageId, "Associated Message")
                 @Html.TextBoxFor(x => x.AssociatedMessageId, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.AssociatedMessageId)
             </div>
             <div class="form-group">
                 @Html.LabelFor(x => x.Notes)
                 @Html.TextAreaFor(x => x.Notes, new { @class = "form-control", rows = 5 })
+                @Html.ValidationMessageFor(x => x.Notes)
             </div>
             <div class="form-group">
                 @Html.LabelFor(x => x.Completed, "Is Complete")
                 @Html.CheckBoxFor(x => x.Completed)
+                @Html.ValidationMessageFor(x => x.Completed)
             </div>
             <div class="form-group">
                 <input class="btn btn-primary pull-right" type="submit" text="Submit">
