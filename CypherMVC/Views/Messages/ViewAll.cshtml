@@ -1,4 +1,6 @@
-﻿<div class="row">
+﻿@model List<CypherMVC.Models.Message>
+
+<div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
             <small>Listed below are feedback messages we have received from customers.</small>
@@ -16,41 +18,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Concerned Customer</td>
-                    <td>Neque sed massa sagittis. Nunc nec lacus sed magna vehicula interdum. Aliquam orci erat, rutrum vel ...</td>
-                    <td>mark@sample.com</td>
-                    <td>1/17/2016 11:01:39 AM</td>
-                    <td><a class="btn btn-primary" href="/Messages/ReplyMessage/1">Reply</a></td>
-                </tr>
-                <tr>
-                    <td>Question about shipping</td>
-                    <td>Nulla consequat neque sed massa sagittis, sed varius lorem faucibus. Nunc nec lacus sed magna vehicu...</td>
-                    <td>joe@sample.com</td>
-                    <td>1/17/2016 11:01:39 AM</td>
-                    <td><a class="btn btn-primary" href="/Messages/ReplyMessage/2">Reply</a></td>
-                </tr>
-                <tr>
-                    <td>Mobile app troubles</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat neque sed massa sagittis, s...</td>
-                    <td>sam@sample.com</td>
-                    <td>1/17/2016 11:01:39 AM</td>
-                    <td><a class="btn btn-primary" href="/Messages/ReplyMessage/3">Reply</a></td>
-                </tr>
-                <tr>
-                    <td>Poor service</td>
-                    <td>Consequat neque sed massa sagittis, sed varius lorem faucibus. Nunc nec lacus sed magna vehicula int...</td>
-                    <td>alex@sample.com</td>
-                    <td>1/17/2016 11:01:39 AM</td>
-                    <td><a class="btn btn-primary" href="/Messages/ReplyMessage/4">Reply</a></td>
-                </tr>
-                <tr>
-                    <td>Like the new site!</td>
-                    <td>Adipiscing elit. Nulla consequat neque sed massa sagittis, sed varius lorem faucibus. Nunc nec lacus...</td>
-                    <td>john@sample.com</td>
-                    <td>1/17/2016 11:01:39 AM</td>
-                    <td><a class="btn btn-primary" href="/Messages/ReplyMessage/5">Reply</a></td>
-                </tr>
+                @foreach (var message in Model)
+                {
+                    <tr>
+                        <td>@message.Subject</td>
+                        <td>@message.Content</td>
+                        <td>@message.Author</td>
+                        <td>@message.Created</td>
+                        <td>@Html.ActionLink("Reply","Reply","Messages",new { Id = message.MessageThreadId}, new { @class = "btn btn-primary" })</td>
+                    </tr>
+                }                       
             </tbody>
         </table>
     </div>

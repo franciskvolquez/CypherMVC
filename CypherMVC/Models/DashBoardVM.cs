@@ -7,7 +7,7 @@ namespace CypherMVC.Models
 {
     public class DashBoardVM
     {
-        public IEnumerable<MessageThread> Threads   { get; set; }
+        public IEnumerable<Message> Messages   { get; set; }
         public IEnumerable<Task> Tasks { get; set; }
 
     }

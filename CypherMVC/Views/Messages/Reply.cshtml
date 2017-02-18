@@ -1,28 +1,30 @@
-﻿<div class="row">
+﻿@model CypherMVC.Models.ReplyVM
+
+<div class="row">
     <div class="col-lg-8">
-        <h2>Reply To: Concerned Customer</h2>
-        <div class="thread-item">
-            <p>mark@sample.com</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat neque sed massa sagittis, sed varius lorem faucibus. Nunc nec lacus sed magna vehicula interdum. Aliquam orci erat, rutrum vel scelerisque ultrices, venenatis vitae leo. Sed sed sagittis felis, in iaculis risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p>1/17/2016 11:01:39 AM</p>
-        </div>
-        <div class="thread-item">
-            <p>mark@sample.com</p>
-            <p>Neque sed massa sagittis, sed varius lorem faucibus. Nunc nec lacus sed magna vehicula interdum. Aliquam orci erat, rutrum vel scelerisque ultrices, venenatis vitae leo. Sed sed sagittis felis, in iaculis risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p>1/17/2016 11:01:39 AM</p>
-        </div>
+        <h2>Reply To: @Model.Subject</h2>
+
+        @foreach (var message in Model.Messages)
+        {
+            <div class="thread-item">
+                <p>@message.Author</p>
+                <p>@message.Content</p>
+                <p>@message.Created</p>
+            </div>
+        }
     </div>
 </div>
 <div class="row">
     <div class="col-md-12">
-        <form action="/Messages/ReplyMessage/1" method="post">
-            <input id="Subject" name="Subject" type="hidden" value="Concerned Customer" />            <div class="form-group">
-                <label>Reply Content</label>
-                <textarea class="form-control" cols="20" id="Content" name="Content" rows="10"></textarea>
+        @using (Html.BeginForm("Reply", "Messages"))
+        {
+            <div class="form-group">
+                @Html.LabelFor(x => x.Content, "Reply")
+                @Html.TextAreaFor(x => x.Content, new { @class = "form-control", rows = 10 })
             </div>
-            <input data-val="true" data-val-number="The field MessageThreadId must be a number." data-val-required="The MessageThreadId field is required." id="MessageThreadId" name="MessageThreadId" type="hidden" value="1" />                <div class="form-group">
+            <div class="form-group">
                 <input class="btn btn-primary pull-right" type="submit" text="Submit">
-            </div>
-        </form>
-    </div>
+             </div>
+         }               
+         </div>
 </div>

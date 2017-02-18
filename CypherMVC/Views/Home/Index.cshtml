@@ -1,4 +1,6 @@
-﻿<div class="row">
+﻿@model CypherMVC.Models.DashBoardVM
+
+<div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
             Welcome to the Feedback Application! <br />
@@ -23,35 +25,21 @@
                         </tr>
                     </thead>
                     <tbody>
+                       @foreach (var message in Model.Messages)
+                       {
                         <tr>
-                            <td>mark@sample.com</td>
-                            <td>Concerned Customer</td>
-                            <td>1/17/2016 11:01:39 AM</td>
-                            <td><a href="/Messages/ReplyMessage/3">View</a></td>
+                            <td>@message.Author</td>
+                            <td>@message.Subject</td>
+                            <td>@message.Created</td>
+                            <td>@Html.ActionLink("View", "Reply","Messages",new { Id = message.MessageThreadId },null)</td>
                         </tr>
-                        <tr>
-                            <td>joe@sample.com</td>
-                            <td>Question about shipping</td>
-                            <td>1/17/2016 11:01:39 AM</td>
-                            <td><a href="/Messages/ReplyMessage/4">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>sam@sample.com</td>
-                            <td>Mobile app troubles</td>
-                            <td>1/17/2016 11:01:39 AM</td>
-                            <td><a href="/Messages/ReplyMessage/5">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>alex@sample.com</td>
-                            <td>Poor service</td>
-                            <td>1/17/2016 11:01:39 AM</td>
-                            <td><a href="/Messages/ReplyMessage/6">View</a></td>
-                        </tr>
+                       }
+                        
                     </tbody>
                 </table>
             </div>
             <div class="panel-footer">
-                <a class="pull-right btn btn-primary" href="/Messages/ViewMessages">See all</a> <br />
+                @Html.ActionLink("See all", "ViewAll", "Messages",null,new { @class = "pull-right btn btn-primary"}) <br />
                 <span class="clearfix"></span>
             </div>
         </div>
@@ -70,23 +58,22 @@
                         </tr>
                     </thead>
                     <tbody>
+                       @foreach (var task in Model.Tasks)
+                       {
                         <tr>
-                            <td>Follow up with marketing about materials</td>
-                            <td>A vendor has not received shipments for an order they placed through the online form.</td>
-                            <td>1/24/2016 11:01:39 AM</td>
-                            <td><a href="/Task/CreateEditTask/1">View</a></td>
+                            <td>@task.Title</td>
+                            <td>@task.Description</td>
+                            <td>@task.DueDate</td>
+                            <td>@Html.ActionLink("View", "CreateEdit", "Task", new { Id = task.Id}, null)</td>
                         </tr>
-                        <tr>
-                            <td>Vendor issues</td>
-                            <td>A vendor has not received their order, please address this and check that the order was placed.</td>
-                            <td>1/24/2016 11:01:39 AM</td>
-                            <td><a href="/Task/CreateEditTask/2">View</a></td>
-                        </tr>
+                       }
+                        
                     </tbody>
                 </table>
             </div>
             <div class="panel-footer">
-                <a class="pull-right btn btn-primary" href="/Home/ViewTasks?Length=4">See all</a>
+                @Html.ActionLink("See all","ViewAll","Task",null,new { @class="pull-right btn btn-primary"})
+              
                 <div class="clearfix"></div>
             </div>
         </div>

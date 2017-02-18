@@ -1,4 +1,6 @@
-﻿<div class="row">
+﻿@model List<CypherMVC.Models.Task>
+
+<div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
             Tasks<br />
@@ -17,24 +19,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Follow up with marketing about materials</td>
-                    <td>A vendor has not received shipments for an order they placed through the online form.</td>
-                    <td>1/24/2016 11:01:39 AM</td>
-                    <td><a class="btn btn-primary" href="/Task/CreateEditTask/1">Edit</a></td>
-                </tr>
-                <tr>
-                    <td>Vendor issues</td>
-                    <td>A vendor has not received their order, please address this and check that the order was placed.</td>
-                    <td>1/24/2016 11:01:39 AM</td>
-                    <td><a class="btn btn-primary" href="/Task/CreateEditTask/2">Edit</a></td>
-                </tr>
-                <tr>
-                    <td>Poor customer relations</td>
-                    <td>Multiple customer complaints have come through about our phone service - please contact customer relations to verify that procedures are being followed.</td>
-                    <td>1/24/2016 11:01:39 AM</td>
-                    <td><a class="btn btn-primary" href="/Task/CreateEditTask/3">Edit</a></td>
-                </tr>
+                @foreach (var task in Model)
+                {
+                    <tr>
+                        <td>@task.Title</td>
+                        <td>@task.Description</td>
+                        <td>@task.DueDate</td>
+                        <td>@Html.ActionLink("Edit","CreateEdit","Task",new { Id = task.Id },new {@class= "btn btn-primary"})</td>
+                    </tr>
+                }               
             </tbody>
         </table>
     </div>
