@@ -9,12 +9,16 @@ namespace CypherMVC.Controllers
 {
     public class MessagesController : Controller
     {
-        
+        private FeedbackContext _context;
+
+        public MessagesController(FeedbackContext context)
+        {
+            _context = context;
+        }
+
         public ActionResult ViewAll()
         {
-            var context = new FeedbackContext();
-
-            var messagges = context.Threads
+            var messagges = _context.Threads
                 .SelectMany(x => x.Messages).OrderByDescending(c => c.Created).ToList()
                 .GroupBy(y => y.MessageThreadId).Select(grp => grp.FirstOrDefault()).ToList();
                 
@@ -23,10 +27,8 @@ namespace CypherMVC.Controllers
         }
 
         public ActionResult Reply(int id)
-        {
-            var context = new FeedbackContext();
-
-            var thread = context.Threads.First(x => x.MessageThreadId == id)
+        {          
+            var thread = _context.Threads.First(x => x.MessageThreadId == id)
                 .Messages.OrderBy(x => x.Created).ToList();
 
             if(thread != null)
@@ -47,10 +49,7 @@ namespace CypherMVC.Controllers
         [HttpPost]
         public ActionResult Reply(int id, string content)
         {
-            var context = new FeedbackContext();
-
-            var thread = context.Threads.FirstOrDefault(x => x.MessageThreadId == id);
-           
+            var thread = _context.Threads.FirstOrDefault(x => x.MessageThreadId == id);        
 
             if (thread != null)
             {
@@ -62,8 +61,8 @@ namespace CypherMVC.Controllers
                 var index = HttpContext.User.Identity.Name.IndexOf("\\") + 1;
                 newMsg.Author = HttpContext.User.Identity.Name.Substring(index);
 
-                context.Messages.Add(newMsg);
-                context.SaveChanges();
+                _context.Messages.Add(newMsg);
+                _context.SaveChanges();
             }
 
             return RedirectToAction("ViewAll");
